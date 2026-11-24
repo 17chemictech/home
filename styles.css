@@ -276,6 +276,10 @@ a:focus-visible {
   .host {
     display: none;
   }
+
+  .entries a {
+    grid-template-columns: 36px minmax(0, 1fr) 24px;
+  }
 }
 
 .arrow {
@@ -285,22 +289,7 @@ a:focus-visible {
   transition: transform 0.22s ease, color 0.22s ease;
 }
 
-.entries a:hover .host {
-  font-family: var(--mono);
-  font-size: 11px;
-  letter-spacing: 0.02em;
-  color: var(--faint);
-  padding-top: 7px;
-  white-space: nowrap;
-}
-
-@media (max-width: 720px) {
-  .host {
-    display: none;
-  }
-}
-
-.arrow {
+.entries a:hover .arrow {
   color: var(--accent);
   transform: translate(3px, -3px);
 }
