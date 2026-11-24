@@ -1,0 +1,393 @@
+/* Olivie · 个人站点
+   与 blog.olivie.space 共用同一套编辑部气质：暖白纸面、衬线正文、细发丝线、一点红。 */
+
+:root {
+  color-scheme: light;
+  --bg: #fbf5f4;
+  --paper: #fffaf8;
+  --ink: #191919;
+  --muted: #68605d;
+  --faint: #857772;
+  --line: #d8cbc7;
+  --accent: #d31710;
+  --serif: Georgia, "Times New Roman", "Noto Serif SC", "Songti SC", serif;
+  --sans: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB",
+    "Microsoft YaHei", sans-serif;
+  --mono: "SF Mono", ui-monospace, "JetBrains Mono", Menlo, monospace;
+  --shell: min(960px, calc(100% - 40px));
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    color-scheme: dark;
+    --bg: #141110;
+    --paper: #1c1817;
+    --ink: #f2ebe8;
+    --muted: #b5a8a3;
+    --faint: #9c8c87;
+    --line: #3a3130;
+    --accent: #ff6a5e;
+  }
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--serif);
+  font-size: 17px;
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+}
+
+.shell {
+  width: var(--shell);
+  margin: 0 auto;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+a:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+/* ————— 页眉 ————— */
+
+.masthead {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 16px;
+  width: var(--shell);
+  margin: 0 auto;
+  padding: 28px 0 14px;
+  border-bottom: 1px solid var(--line);
+}
+
+.wordmark {
+  position: relative;
+  font-size: 21px;
+  letter-spacing: -0.01em;
+  padding-right: 9px;
+}
+
+.wordmark::after {
+  content: "";
+  position: absolute;
+  right: 0;
+  bottom: 6px;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--accent);
+}
+
+.links {
+  display: flex;
+  gap: 20px;
+  font-family: var(--sans);
+  font-size: 13px;
+  letter-spacing: 0.02em;
+  color: var(--muted);
+}
+
+.links a {
+  text-decoration: underline;
+  text-decoration-color: transparent;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.34em;
+  transition: color 0.18s ease, text-decoration-color 0.18s ease;
+}
+
+.links a:hover {
+  color: var(--accent);
+  text-decoration-color: var(--accent);
+}
+
+/* ————— 主视觉 ————— */
+
+.hero {
+  padding: 72px 0 8px;
+}
+
+.eyebrow {
+  margin: 0 0 18px;
+  font-family: var(--sans);
+  font-size: 12px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--faint);
+}
+
+.hero h1 {
+  margin: 0;
+  font-size: clamp(2.4rem, 7.2vw, 4.6rem);
+  line-height: 1.06;
+  letter-spacing: -0.025em;
+  font-weight: 400;
+}
+
+.lede {
+  max-width: 30em;
+  margin: 26px 0 0;
+  font-size: clamp(1rem, 1.6vw, 1.09rem);
+  color: var(--muted);
+}
+
+/* ————— 入口 ————— */
+
+.index {
+  margin-top: 76px;
+}
+
+.section-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 16px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--line);
+}
+
+.section-head h2 {
+  margin: 0;
+  font-size: 15px;
+  font-weight: 400;
+  letter-spacing: 0.08em;
+  font-family: var(--sans);
+}
+
+.section-note {
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--faint);
+}
+
+.entries {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.entries li + li {
+  border-top: 1px solid var(--line);
+}
+
+.entries a {
+  position: relative;
+  display: grid;
+  grid-template-columns: 44px minmax(0, 1fr) auto 28px;
+  gap: 20px;
+  align-items: start;
+  padding: 22px 6px 22px 0;
+  transition: padding-left 0.22s ease, background-color 0.22s ease;
+}
+
+.entries a::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 14px;
+  bottom: 14px;
+  width: 2px;
+  background: var(--accent);
+  transform: scaleY(0);
+  transform-origin: top;
+  transition: transform 0.22s ease;
+}
+
+.entries a:hover {
+  padding-left: 14px;
+  background: var(--paper);
+}
+
+.entries a:hover::before {
+  transform: scaleY(1);
+}
+
+.num {
+  font-family: var(--mono);
+  font-size: 12px;
+  color: var(--faint);
+  padding-top: 5px;
+}
+
+.body {
+  display: block;
+  min-width: 0;
+}
+
+.name {
+  display: block;
+  font-size: clamp(1.15rem, 2.2vw, 1.35rem);
+  letter-spacing: -0.01em;
+}
+
+.name i {
+  font-style: normal;
+  font-family: var(--sans);
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--faint);
+  margin-left: 10px;
+  vertical-align: 2px;
+}
+
+.entries a:hover .name {
+  color: var(--accent);
+}
+
+.desc {
+  display: block;
+  margin-top: 5px;
+  font-size: 14.5px;
+  line-height: 1.6;
+  color: var(--muted);
+}
+
+.host {
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.02em;
+  color: var(--faint);
+  padding-top: 7px;
+  white-space: nowrap;
+}
+
+@media (max-width: 720px) {
+  .host {
+    display: none;
+  }
+}
+
+.arrow {
+  font-family: var(--sans);
+  font-size: 16px;
+  color: var(--muted);
+  transition: transform 0.22s ease, color 0.22s ease;
+}
+
+.entries a:hover .host {
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.02em;
+  color: var(--faint);
+  padding-top: 7px;
+  white-space: nowrap;
+}
+
+@media (max-width: 720px) {
+  .host {
+    display: none;
+  }
+}
+
+.arrow {
+  color: var(--accent);
+  transform: translate(3px, -3px);
+}
+
+/* ————— 关于 ————— */
+
+.about {
+  margin-top: 72px;
+  padding-bottom: 40px;
+}
+
+.about p {
+  max-width: 40em;
+  margin: 22px 0 0;
+  color: var(--muted);
+}
+
+.about a {
+  color: var(--ink);
+  text-decoration: underline;
+  text-decoration-color: var(--accent);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.22em;
+}
+
+.about a:hover {
+  color: var(--accent);
+}
+
+/* ————— 页脚 ————— */
+
+.footer {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 24px;
+  align-items: baseline;
+  justify-content: space-between;
+  padding: 20px 0 44px;
+  border-top: 1px solid var(--line);
+  font-family: var(--sans);
+  font-size: 12px;
+  color: var(--faint);
+}
+
+.footer p {
+  margin: 0;
+}
+
+.footer-links {
+  display: flex;
+  gap: 18px;
+}
+
+.footer-links a:hover {
+  color: var(--accent);
+}
+
+@media (max-width: 560px) {
+  body {
+    font-size: 16px;
+  }
+
+  .masthead {
+    padding-top: 20px;
+  }
+
+  .hero {
+    padding-top: 48px;
+  }
+
+  .index {
+    margin-top: 56px;
+  }
+
+  .entries a {
+    grid-template-columns: 30px minmax(0, 1fr) 20px;
+    gap: 12px;
+    padding-right: 0;
+  }
+
+  .desc {
+    font-size: 14px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    transition: none !important;
+  }
+}
